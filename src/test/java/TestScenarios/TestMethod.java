@@ -10,6 +10,7 @@ import org.testng.annotations.*;
 
 import Objects.FacebookPage;
 import Objects.GoogleSearchpage;
+import Objects.checkViewPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestMethod {
@@ -17,6 +18,7 @@ public class TestMethod {
 	WebDriver driver;
 	GoogleSearchpage repos;
 	FacebookPage obj;
+	checkViewPage view;
 	String url = "https://www.google.com/";
 	
 	@SuppressWarnings("deprecation")
@@ -36,7 +38,9 @@ public class TestMethod {
 	public void search() {
 		 repos = new GoogleSearchpage(driver);
 		 obj = new FacebookPage(driver);
+		 view = new checkViewPage();
 		 
+		 view.printStatement();
 		 repos.searchgoogle("facebook");
 	}
 	
