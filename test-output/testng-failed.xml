@@ -8,6 +8,7 @@
           <include name="exit"/>
           <include name="initialize"/>
           <include name="logintoFacebook"/>
+          <include name="search"/>
         </methods>
       </class> <!-- TestScenarios.TestMethod -->
     </classes>
