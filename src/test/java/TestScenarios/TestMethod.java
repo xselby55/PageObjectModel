@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
 import Objects.FacebookPage;
@@ -20,17 +22,29 @@ public class TestMethod {
 	FacebookPage obj;
 	checkViewPage view;
 	String url = "https://www.google.com/";
+	String browser = "firefox";
 	
 	@SuppressWarnings("deprecation")
 	@BeforeTest
 	public void initialize() {
 		
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+		if(browser.equals("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			
+		}else if(browser.equals("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			
+		}else {
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+			
+		}
+		
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		
 		driver.get(url);
 	}
 	
